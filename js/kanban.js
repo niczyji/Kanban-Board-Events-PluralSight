@@ -29,8 +29,17 @@ const create_item = () => {
   });
   let input = document.createElement("input");
   item.appendChild(input);
+
   let save_btn = document.createElement("button");
   save_btn.innerHTML = "Save";
+  save_btn.addEventListener("click", () => {
+    error.innerHTML = "";
+    if (input.value !== "") {
+      order += 1;
+      item.innerHTML = input.value;
+      adding = false;
+    }
+  });
 };
 
 document.querySelectorAll(".drop").forEach(element => {});
