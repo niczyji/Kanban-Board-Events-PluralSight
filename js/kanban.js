@@ -38,8 +38,21 @@ const create_item = () => {
       order += 1;
       item.innerHTML = input.value;
       adding = false;
+    } else {
+      error.innerHTML = message;
     }
   });
+  item.appendChild(save_btn);
+  return item;
 };
 
-document.querySelectorAll(".drop").forEach(element => {});
+document.querySelectorAll(".drop").forEach(element => {
+  element.addEventListener("drop", e => {
+    e.preventDefault();
+    const id = e.dataTransfer.getData("text");
+    e.target.appendChild(document.getElementById(id));
+  });
+  element.addEventListener("dragover", e => {
+    e.preventDefault();
+  });
+});
